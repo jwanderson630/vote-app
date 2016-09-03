@@ -11,7 +11,7 @@ require('./models/models');
 var api = require('./routes/api');
 var authenticate = require('./routes/authentication')(passport);
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test-vote');
+mongoose.connect('mongodb://yoej262:mabel!@#1@ds019846.mlab.com:19846/vote-app');
 
 var app = express();
 
