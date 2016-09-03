@@ -1,0 +1,13 @@
+<form ng-submit="submitEdits()">
+	<input type="text" class="form-control" ng-model="currentPoll.topic" required placeholder="What would you like to poll?"/>
+	<div class="container">
+	<div class="col-xs-4">
+		<button type="button" ng-click="addOption()" class="btn btn-primary btn-sm">Add Option</button>
+	</div>
+	<div class="col-xs-8">
+		<div ng-repeat="option in currentPoll.options"><input required type="text" ng-model="option.text" placeholder="Enter poll option"/>
+		<button class="btn btn-primary btn-sm" ng-click="currentPoll.options.splice($index,1)">X</button>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit Poll!</button>
+	</div>
+</form>

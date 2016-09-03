@@ -1,0 +1,20 @@
+
+<h1 class="text-center">Vote!</h1>
+<div class="table-responsive">
+	<table class="table table-condensed table-striped">
+		<thead>
+			<tr>
+				<th>Topic</th>
+				<th>Created by</th>
+				<th>Created at</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="poll in polls | orderBy:'created_at':true">
+				<td ng-click="getCurrentPoll(poll)">{{poll.topic}}</td>
+				<td ng-click="goToUser(poll.created_by)">{{poll.created_by}}</td>
+				<td>{{poll.created_at | date:"h:mma 'on' MMM d, y"}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

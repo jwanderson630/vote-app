@@ -1,0 +1,38 @@
+<div class="container-fluid">
+	<div class="col-xs-12">
+		<a href="https://twitter.com/share" class="twitter-share-button btn btn-default pull-right" data-show-count="false"><span class="glyphicon glyphicon-share"></span> Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</div>
+	<h1 class="text-center" >{{currentPoll.topic}}</h1>
+	<div class="col-xs-12 col-md-6 vote-side text-left">
+		<div class="well text-center" ng-hide="authenticated">
+			<h5>To vote in this poll please login</h5>
+			<a href="#/login"><button class="btn btn-primary" >Login</button></a>
+			<a href="#/register"><button class="btn btn-primary" >Register</button></a>
+		</div>
+		<form ng-show="authenticated" ng-submit="submitVote()">
+			<div class="radio form-control" ng-repeat="option in currentPoll.options" ng-class-odd="'odd'" ng-class-even="'even'">
+				<label><input ng-disabled="voted" type="radio" ng-model="vote.index" ng-value="$index" name="optradio">{{option.text}}</label>
+			</div>
+			<input ng-disabled="voted" class="btn btn-primary form-control" value="Vote!" type="submit"/> 
+		</form>
+	</div>
+	<div class="col-xs-12 col-md-6 results-side">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Option</th>
+					<th>Number of Votes</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="option in currentPoll.options">
+					<td>{{option.text}}</td>
+					<td>{{option.votes}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<canvas id="doughnut" class="chart chart-doughnut"
+  chart-data="data" chart-labels="labels"  legend="true">
+</canvas> 
+	</div>
+</div>

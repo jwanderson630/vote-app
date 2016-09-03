@@ -1,0 +1,23 @@
+<div class="table-responsive">
+	<table class="table table-condensed table-striped">
+		<thead>
+			<tr>
+				<th>Topic</th>
+				<th>Created by</th>
+				<th>Created at</th>
+				<th ng-show="isMyPage">Options</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="poll in polls | orderBy:'created_at':true">
+				<td ng-click="getCurrentPoll(poll)">{{poll.topic}}</td>
+				<td>{{poll.created_by}}</td>
+				<td>{{poll.created_at | date:"h:mma 'on' MMM d, y"}}</td>
+				<td ng-show="isMyPage">
+					<button ng-click="goToEdit(poll)" class="btn btn-primary">Edit</button>
+					<button ng-click="deletePoll(poll)" class="btn btn-danger">Delete</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
